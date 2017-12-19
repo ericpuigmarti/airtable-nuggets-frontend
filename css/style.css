@@ -1,0 +1,89 @@
+body {
+    background: #EFEFEF;
+    font-family: 'Libre Franklin', sans-serif;
+}
+h1 {
+    text-align: center; 
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+li {
+    width: 300px;
+    border-radius: 15px;
+    padding: 2em;
+    margin: 1em;
+}
+.center {
+    text-align: center;
+}
+.strong {
+    font-weight: 700
+}
+.subhead {
+    font-size: 12px;
+    margin-right: 0.5em;
+}
+.fade {
+    opacity: 0.3
+}
+.caps {
+    text-transform: uppercase;
+    /*letter-spacing: .1em;*/
+}
+
+.pad-sm {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+.med {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.pill {
+    border-radius: 2px;
+    min-width: 18px;
+    height: 18px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.blue-light2, .blueLight2, .blueLight2-hover:hover, .blueLight2-focus:focus {
+    background-color: #cfdfff;
+}
+
+.rounded {
+    border-radius: 6px;
+}
+.button-stroked {
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.05)
+}
+
+.galleryCardContainer {
+    background: #fff;
+    transition-property: transform, top, left;
+    -webkit-transition-property: transform, top, left;
+    -moz-transition-property: transform, top, left;
+    transition-duration: 0.08s, 0.2s, 0.2s;
+    -webkit-transition-duration: 0.08s, 0.2s, 0.2s;
+    -moz-transition-duration: 0.08s, 0.2s, 0.2s;
+    transition-timing-function: ease-out, ease-in-out, ease-in-out;
+    -webkit-transition-timing-function: ease-out, ease-in-out, ease-in-out;
+    -moz-transition-timing-function: ease-out, ease-in-out, ease-in-out;
+    transition-delay: 0s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+
+}

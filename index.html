@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>FreshBooks UX Research Nuggets</title>
+    	<link href='css/style.css' rel='stylesheet' type='text/css'>
+		<!-- Google Font -->
+		<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700" rel="stylesheet">
+
+    </head>
+    <body>
+<div id="app">
+            <h1>FreshBooks UX Research Nuggets</h1>
+            <ul>
+                <li v-for="item in items" class="galleryCardContainer rounded button-stroked">
+                    <!-- <h3>{{ item['fields']['Item'] }}</h3> -->
+                    <p class="med center"><i>"{{ item['fields']['Insight'] }}"</i></p>
+                    <p><span class="fade caps subhead">Industry:</span><strong class="pill blue-light2 pad-sm">{{ item['fields']['Industry'] }}</strong></p>
+                    <p><span class="fade caps subhead">Mandate:</span><strong class="pill">{{ item['fields']['Mandate'] }}</strong></p>
+                    <p><span class="fade caps subhead">Personas/Role:</span><strong class="pill">{{ item['fields']['Personas/Roles'] }}</strong></p>
+                    <p class="truncate"><span class="fade caps subhead">Evidence:</span><a v-bind:href="url">{{ item['fields']['Evidence'] }}</a></p>
+                    <p><span class="fade caps subhead">Experience Vector:</span><strong class="pill blue-light2 pad-sm">{{ item['fields']['Experience vector'] }}</strong></p>
+                    <p><span class="fade caps subhead">Research Method:</span><strong class="pill blue-light2 pad-sm">{{ item['fields']['Research Method'] }}</strong></p>
+                    <p><span class="fade caps subhead">Team Member:</span><strong class="pill">{{ item['fields']['Team Member'] }}</strong></p>
+                    <!-- <p><strong>Category: </strong>{{ item['fields']['Category'] }}</p> -->
+                    <!-- <img :src="item['fields']['Photo'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo']" width="150"> -->
+                </li>
+            </ul>            
+        </div><!--app-->
+        
+        <!-- Include Dependancy Scripts -->
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+<script type="text/javascript">
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    items: []
+                },
+                mounted: function(){
+                   this.loadItems(); 
+                },
+                methods: {
+                    loadItems: function(){
+                        
+                        // Init variables
+                        var self = this
+                        var app_id = "appLMf09fXfYNAbI9";
+                        var app_key = "keyQ0cnHS9f43gbzG";
+                        this.items = []
+axios.get(
+                            "https://api.airtable.com/v0/"+app_id+"/Nuggets?maxRecords=100&view=By%20Vector%2FMagnitude",
+                            { 
+                                headers: { Authorization: "Bearer "+app_key } 
+                            }
+                        ).then(function(response){
+                            self.items = response.data.records
+                        }).catch(function(error){
+                            console.log(error)
+                        })
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
+
+<!-- 
+API key: keyQ0cnHS9f43gbzG
+bases App ID: appLMf09fXfYNAbI9
+
+ -->

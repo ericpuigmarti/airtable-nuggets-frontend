@@ -1,0 +1,81 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/6.2.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'axios' ]
+2 info using npm@4.0.3
+3 info using node@v6.2.0
+4 verbose config Skipping project config: /Users/epuigmarti/.npmrc. (matches userconfig)
+5 silly loadCurrentTree Starting
+6 silly install loadCurrentTree
+7 silly install readLocalPackageData
+8 silly fetchPackageMetaData axios
+9 silly fetchNamedPackageData axios
+10 silly mapToRegistry name axios
+11 silly mapToRegistry using default registry
+12 silly mapToRegistry registry http://npm.builds.2ndsiteinc.com/
+13 silly mapToRegistry data Result {
+13 silly mapToRegistry   raw: 'axios',
+13 silly mapToRegistry   scope: null,
+13 silly mapToRegistry   escapedName: 'axios',
+13 silly mapToRegistry   name: 'axios',
+13 silly mapToRegistry   rawSpec: '',
+13 silly mapToRegistry   spec: 'latest',
+13 silly mapToRegistry   type: 'tag' }
+14 silly mapToRegistry uri http://npm.builds.2ndsiteinc.com/axios
+15 verbose request uri http://npm.builds.2ndsiteinc.com/axios
+16 verbose request no auth needed
+17 info attempt registry request try #1 at 1:38:42 PM
+18 verbose request id 789a48225070e152
+19 http request GET http://npm.builds.2ndsiteinc.com/axios
+20 info retry will retry, error on last attempt: Error: connect ECONNREFUSED 192.168.64.149:80
+21 info attempt registry request try #2 at 1:39:58 PM
+22 http request GET http://npm.builds.2ndsiteinc.com/axios
+23 info retry will retry, error on last attempt: Error: connect ECONNREFUSED 192.168.64.149:80
+24 info attempt registry request try #3 at 1:42:04 PM
+25 http request GET http://npm.builds.2ndsiteinc.com/axios
+26 silly fetchPackageMetaData Error: connect ECONNREFUSED 192.168.64.149:80
+26 silly fetchPackageMetaData     at Object.exports._errnoException (util.js:953:11)
+26 silly fetchPackageMetaData     at exports._exceptionWithHostPort (util.js:976:20)
+26 silly fetchPackageMetaData     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1080:14)
+26 silly fetchPackageMetaData  error for axios { Error: connect ECONNREFUSED 192.168.64.149:80
+26 silly fetchPackageMetaData     at Object.exports._errnoException (util.js:953:11)
+26 silly fetchPackageMetaData     at exports._exceptionWithHostPort (util.js:976:20)
+26 silly fetchPackageMetaData     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1080:14)
+26 silly fetchPackageMetaData   code: 'ECONNREFUSED',
+26 silly fetchPackageMetaData   errno: 'ECONNREFUSED',
+26 silly fetchPackageMetaData   syscall: 'connect',
+26 silly fetchPackageMetaData   address: '192.168.64.149',
+26 silly fetchPackageMetaData   port: 80 }
+27 silly rollbackFailedOptional Starting
+28 silly rollbackFailedOptional Finishing
+29 silly runTopLevelLifecycles Finishing
+30 silly install printInstalled
+31 verbose stack Error: connect ECONNREFUSED 192.168.64.149:80
+31 verbose stack     at Object.exports._errnoException (util.js:953:11)
+31 verbose stack     at exports._exceptionWithHostPort (util.js:976:20)
+31 verbose stack     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1080:14)
+32 verbose cwd /Users/epuigmarti/Documents/Github Repos/airtable-nuggets-frontend
+33 error Darwin 16.4.0
+34 error argv "/usr/local/Cellar/node/6.2.0/bin/node" "/usr/local/bin/npm" "install" "axios"
+35 error node v6.2.0
+36 error npm  v4.0.3
+37 error code ECONNREFUSED
+38 error errno ECONNREFUSED
+39 error syscall connect
+40 error Error: connect ECONNREFUSED 192.168.64.149:80
+40 error     at Object.exports._errnoException (util.js:953:11)
+40 error     at exports._exceptionWithHostPort (util.js:976:20)
+40 error     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1080:14)
+40 error  { Error: connect ECONNREFUSED 192.168.64.149:80
+40 error     at Object.exports._errnoException (util.js:953:11)
+40 error     at exports._exceptionWithHostPort (util.js:976:20)
+40 error     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1080:14)
+40 error   code: 'ECONNREFUSED',
+40 error   errno: 'ECONNREFUSED',
+40 error   syscall: 'connect',
+40 error   address: '192.168.64.149',
+40 error   port: 80 }
+41 error If you are behind a proxy, please make sure that the
+41 error 'proxy' config is set properly.  See: 'npm help config'
+42 verbose exit [ 1, true ]
