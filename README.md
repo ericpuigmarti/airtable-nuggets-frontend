@@ -29,7 +29,7 @@ Now we can access any table in our Airsheet account by referencing the [API docs
 
 ```Javascript
 # Pass in the app key and table name
-axios.get("https://api.airtable.com/v0/"+app_id+"/"Table Name",
+axios.get("https://api.airtable.com/v0/"+app_id+"/"Table Name"
 ```
 
 //## Contributing
