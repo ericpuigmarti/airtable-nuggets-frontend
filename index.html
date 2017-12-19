@@ -2,12 +2,15 @@
     <head>
         <title>FreshBooks UX Research Nuggets</title>
     	<link href='css/style.css' rel='stylesheet' type='text/css'>
+    	<link href='css/spectre.css' rel='stylesheet' type='text/css'>
+
 		<!-- Google Font -->
 		<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700" rel="stylesheet">
 
     </head>
     <body>
-<div id="app">
+		<div class="container">
+		<div id="app">
             <h1>FreshBooks UX Research Nuggets</h1>
             <ul>
                 <li v-for="item in items" class="galleryCardContainer rounded button-stroked">
@@ -24,7 +27,8 @@
                     <!-- <img :src="item['fields']['Photo'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo']" width="150"> -->
                 </li>
             </ul>            
-        </div><!--app-->
+        </div><!--/end App-->
+        </div> <!-- /end Container -->
         
         <!-- Include Dependancy Scripts -->
         <script type="text/javascript" src="https://unpkg.com/vue"></script>
@@ -46,7 +50,7 @@
                         var app_id = "appLMf09fXfYNAbI9";
                         var app_key = "keyQ0cnHS9f43gbzG";
                         this.items = []
-axios.get(
+						axios.get(
                             "https://api.airtable.com/v0/"+app_id+"/Nuggets?maxRecords=100&view=By%20Vector%2FMagnitude",
                             { 
                                 headers: { Authorization: "Bearer "+app_key } 

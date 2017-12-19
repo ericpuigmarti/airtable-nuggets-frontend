@@ -1,12 +1,13 @@
 body {
-    background: #EFEFEF;
+    background: #EFEFEF !important;
     font-family: 'Libre Franklin', sans-serif;
+    padding: 4em;
 }
 h1 {
     text-align: center; 
 }
 ul {
-    list-style-type: none;
+    list-style-type: none !important;
     margin: 0;
     padding: 0;
     display: flex;
@@ -18,6 +19,9 @@ li {
     border-radius: 15px;
     padding: 2em;
     margin: 1em;
+}
+.container {
+    max-width: 1440px !important;
 }
 .center {
     text-align: center;
@@ -85,5 +89,6 @@ li {
     transition-delay: 0s;
     -webkit-transition-delay: 0s;
     -moz-transition-delay: 0s;
+    height: fit-content;
 
 }
