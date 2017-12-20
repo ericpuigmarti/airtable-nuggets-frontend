@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>FreshBooks UX Research Nuggets</title>
+        <title>FreshBooks Research Nuggets</title>
     	<link href='css/style.css' rel='stylesheet' type='text/css'>
     	<link href='css/spectre.css' rel='stylesheet' type='text/css'>
 
@@ -10,12 +10,17 @@
     </head>
     <body>
 		<div class="container">
+		<h1>FreshBooks Research Nuggets</h1>
+		<!-- Filters -->
+		
+		<!-- App -->
 		<div id="app">
-            <h1>FreshBooks UX Research Nuggets</h1>
             <ul>
                 <li v-for="item in items" class="galleryCardContainer rounded button-stroked">
                     <!-- <h3>{{ item['fields']['Item'] }}</h3> -->
                     <p class="med center"><i>"{{ item['fields']['Insight'] }}"</i></p>
+                    <div class="show-meta center"><a v-on:click="show = !show" class="actions">Show more</a></div>
+                    <span class="meta-data" v-if="!show">
                     <p><span class="fade caps subhead">Industry:</span><strong class="pill blue-light2 pad-sm">{{ item['fields']['Industry'] }}</strong></p>
                     <p><span class="fade caps subhead">Mandate:</span><strong class="pill">{{ item['fields']['Mandate'] }}</strong></p>
                     <p><span class="fade caps subhead">Personas/Role:</span><strong class="pill">{{ item['fields']['Personas/Roles'] }}</strong></p>
@@ -25,6 +30,7 @@
                     <p><span class="fade caps subhead">Team Member:</span><strong class="pill">{{ item['fields']['Team Member'] }}</strong></p>
                     <!-- <p><strong>Category: </strong>{{ item['fields']['Category'] }}</p> -->
                     <!-- <img :src="item['fields']['Photo'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo']" width="150"> -->
+                    </span>
                 </li>
             </ul>            
         </div><!--/end App-->
@@ -37,6 +43,9 @@
             var app = new Vue({
                 el: '#app',
                 data: {
+                	// filters
+                	show: true,
+                	// end filters
                     items: []
                 },
                 mounted: function(){

@@ -69,7 +69,7 @@ li {
 }
 
 .rounded {
-    border-radius: 6px;
+    border-radius: 6px !important;
 }
 .button-stroked {
     box-shadow: 0 0 0 2px rgba(0,0,0,0.05)
@@ -91,4 +91,8 @@ li {
     -moz-transition-delay: 0s;
     height: fit-content;
 
+}
+.show-meta {
+    width: 100%;
+    margin: 0 auto;
 }
