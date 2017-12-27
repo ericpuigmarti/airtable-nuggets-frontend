@@ -1,6 +1,9 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>FreshBooks Research Nuggets</title>
+        <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+		<!-- <link rel="shortcut icon" type="image/png" href="http://eg.com/favicon.png"/> -->
     	<link href='css/style.css' rel='stylesheet' type='text/css'>
     	<link href='css/spectre.css' rel='stylesheet' type='text/css'>
 
@@ -10,24 +13,93 @@
     </head>
     <body>
 		<div class="container">
-		<h1>FreshBooks Research Nuggets</h1>
-		<!-- Filters -->
-		
+		<h1 class="fb-blue">FreshBooks Research Nuggets</h1>		
 		<!-- App -->
 		<div id="app">
+		<!-- Search -->
+		<div class="row search-group">
+			<input type="text" v-model="search" placeholder="search nuggets" name=""/>
+		</div>
+		<!-- Filters -->
+		<form action="#">
+			<!-- Industry -->
+			<div class="form__field form_options col-3">
+				<fieldset>
+					<legend>Sort By Industry</legend>
+					<hr>
+					<input id="sort_1" type="radio" name="sort_by" v-model="sort_by" value="id">
+					<label for="sort_1">Trades & Home Services</label><br>
+					<input id="sort_2" type="radio" name="sort_by" v-model="sort_by" value="first_name">
+					<label for="sort_2">Creative/Marketing</label><br>
+					<input id="sort_3" type="radio" name="sort_by" v-model="sort_by" value="last_name">
+					<label for="sort_3">Information Technology</label><br>
+					<input id="sort_4" type="radio" name="sort_by" v-model="sort_by" value="email">
+					<label for="sort_4">Business Consulting & Legal Services</label><br>
+					<input id="sort_5" type="radio" name="sort_by" v-model="sort_by" value="gender">
+					<label for="sort_5">Other</label>
+				</fieldset>
+			</div>
+			<!-- Industry -->
+			<div class="form__field col-3">
+				<fieldset>
+					<legend>Sort By Industry</legend>
+					<hr>
+					<input id="sort_1" type="radio" name="sort_by" v-model="sort_by" value="id">
+					<label for="sort_1">Trades & Home Services</label>
+					<input id="sort_2" type="radio" name="sort_by" v-model="sort_by" value="first_name">
+					<label for="sort_2">Creative/Marketing</label>
+					<input id="sort_3" type="radio" name="sort_by" v-model="sort_by" value="last_name">
+					<label for="sort_3">Information Technology</label>
+					<input id="sort_4" type="radio" name="sort_by" v-model="sort_by" value="email">
+					<label for="sort_4">Business Consulting & Legal Services</label>
+					<input id="sort_5" type="radio" name="sort_by" v-model="sort_by" value="gender">
+					<label for="sort_5">Other</label>
+				</fieldset>
+			</div>
+		</form>
+<!-- 		<div class="row">
+			<div class="col-12@sm filters-group-wrap">
+			<div class="filters-group">
+			  <p class="filter-label">Filter</p>
+			  <div class="btn-group filter-options">
+			    <button class="btn btn--primary active" data-group="one">Once</button>
+			    <button class="btn btn--primary" data-group="two">Two</button>
+			    <button class="btn btn--primary" data-group="three">Three</button>
+			    <button class="btn btn--primary" data-group="four">Four</button>
+			  </div>
+			</div> -->
+			<!-- 
+			<fieldset class="filters-group">
+			  <legend class="filter-label">Sort</legend>
+			  <div class="btn-group sort-options">
+			    <label class="btn active">
+			      <input type="radio" name="sort-value" value="dom"> Default
+			    </label>
+			    <label class="btn">
+			      <input type="radio" name="sort-value" value="title"> Title
+			    </label>
+			    <label class="btn">
+			      <input type="radio" name="sort-value" value="date-created"> Date Created
+			    </label>
+			  </div>
+			</fieldset>
+			</div>
+			</div> -->
+		<!-- Grid -->
             <ul>
                 <li v-for="item in items" class="galleryCardContainer rounded button-stroked">
                     <!-- <h3>{{ item['fields']['Item'] }}</h3> -->
-                    <p class="med center"><i>"{{ item['fields']['Insight'] }}"</i></p>
+                    <p class="med center"><i>"{{ item['fields']['Insight'] | snippet }}"</i></p>
+                    <!--  -->
                     <div class="show-meta center"><a v-on:click="show = !show" class="actions">Show more</a></div>
                     <span class="meta-data" v-if="!show">
-                    <p><span class="fade caps subhead">Industry:</span><strong class="pill blue-light2 pad-sm">{{ item['fields']['Industry'] }}</strong></p>
-                    <p><span class="fade caps subhead">Mandate:</span><strong class="pill">{{ item['fields']['Mandate'] }}</strong></p>
-                    <p><span class="fade caps subhead">Personas/Role:</span><strong class="pill">{{ item['fields']['Personas/Roles'] }}</strong></p>
+                    <p><span class="fade caps subhead">Industry:</span><strong class="pill full-rounded blue-light2 pad-sm">{{ item['fields']['Industry'] }}</strong></p>
+                    <p><span class="fade caps subhead">Mandate:</span><strong class="pill full-rounded ">{{ item['fields']['Mandate'] }}</strong></p>
+                    <p><span class="fade caps subhead">Personas/Role:</span><strong class="pill full-rounded ">{{ item['fields']['Personas/Roles'] }}</strong></p>
                     <p class="truncate"><span class="fade caps subhead">Evidence:</span><a v-bind:href="url">{{ item['fields']['Evidence'] }}</a></p>
-                    <p><span class="fade caps subhead">Experience Vector:</span><strong class="pill blue-light2 pad-sm">{{ item['fields']['Experience vector'] }}</strong></p>
-                    <p><span class="fade caps subhead">Research Method:</span><strong class="pill blue-light2 pad-sm">{{ item['fields']['Research Method'] }}</strong></p>
-                    <p><span class="fade caps subhead">Team Member:</span><strong class="pill">{{ item['fields']['Team Member'] }}</strong></p>
+                    <p><span class="fade caps subhead">Experience Vector:</span><strong class="pill full-rounded blue-light2 pad-sm">{{ item['fields']['Experience vector'] }}</strong></p>
+                    <p><span class="fade caps subhead">Research Method:</span><strong class="pill full-rounded blue-light2 pad-sm">{{ item['fields']['Research Method'] }}</strong></p>
+                    <p><span class="fade caps subhead">Team Member:</span><strong class="pill full-rounded ">{{ item['fields']['Team Member'] }}</strong></p>
                     <!-- <p><strong>Category: </strong>{{ item['fields']['Category'] }}</p> -->
                     <!-- <img :src="item['fields']['Photo'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo']" width="150"> -->
                     </span>
@@ -39,40 +111,57 @@
         <!-- Include Dependancy Scripts -->
         <script type="text/javascript" src="https://unpkg.com/vue"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
-<script type="text/javascript">
-            var app = new Vue({
-                el: '#app',
-                data: {
-                	// filters
-                	show: true,
-                	// end filters
-                    items: []
-                },
-                mounted: function(){
-                   this.loadItems(); 
-                },
-                methods: {
-                    loadItems: function(){
-                        
-                        // Init variables
-                        var self = this
-                        var app_id = "appLMf09fXfYNAbI9";
-                        var app_key = "keyQ0cnHS9f43gbzG";
-                        this.items = []
-						axios.get(
-                            "https://api.airtable.com/v0/"+app_id+"/Nuggets?maxRecords=100&view=By%20Vector%2FMagnitude",
-                            { 
-                                headers: { Authorization: "Bearer "+app_key } 
-                            }
-                        ).then(function(response){
-                            self.items = response.data.records
-                        }).catch(function(error){
-                            console.log(error)
-                        })
-                    }
-                }
-            })
-        </script>
+		<script type="text/javascript">
+		            // Filter insights to 100 characters
+		            Vue.filter('snippet', function(value){
+						return value.slice(0,200) + "...";
+					});
+
+					// End Filters
+
+		            var app = new Vue({
+		                el: '#app',
+		                data: {
+		                	// filters
+			                	show: true,
+			                	error: false,
+			                	success: false,
+		                	// end filters
+		                    items: [],
+		                },
+		                mounted: function(){
+		                   this.loadItems(); 
+		                },
+		                methods: {
+		                    loadItems: function(){
+		                        
+		                        // Init variables
+		                        var self = this
+		                        var app_id = "appLMf09fXfYNAbI9";
+		                        var app_key = "keyQ0cnHS9f43gbzG";
+		                        this.items = []
+								axios.get(
+		                            "https://api.airtable.com/v0/"+app_id+"/Nuggets?maxRecords=100&view=By%20Vector%2FMagnitude",
+		                            { 
+		                                headers: { Authorization: "Bearer "+app_key } 
+		                            }
+		                        ).then(function(response){
+		                            self.items = response.data.records
+		                        }).catch(function(error){
+		                            console.log(error)
+		                        })
+		                    }
+		                },
+		                // computed: {
+		                // 	compClasses: function (){
+		                // 		return {
+		                // 			available: this.available,
+		                // 			nearby: this.nearby
+		                // 		}
+		                // 	}
+		                // },
+		                
+		            })</script>
     </body>
 </html>
 
