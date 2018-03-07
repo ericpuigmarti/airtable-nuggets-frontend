@@ -12,101 +12,132 @@
 
     </head>
     <body>
-		<div class="container">
-		<h1 class="fb-blue">FreshBooks Research Nuggets</h1>		
+		<div class="container container-pad">
+			<h1 class="fb-blue">FreshBooks Research Nuggets</h1>
+			<p class="site-desc">Learn from the makers behind hundreds of profitable businesses and side projects.</p>		
 		<!-- App -->
-		<div id="app">
-		<!-- Search -->
-		<div class="row search-group">
-			<input type="text" v-model="search" placeholder="search nuggets" name=""/>
-		</div>
+		<div id="app" class="columns">
 		<!-- Filters -->
-		<form action="#">
-			<!-- Industry -->
-			<div class="form__field form_options col-3">
-				<fieldset>
-					<legend>Sort By Industry</legend>
-					<hr>
-					<input id="sort_1" type="radio" name="sort_by" v-model="sort_by" value="id">
-					<label for="sort_1">Trades & Home Services</label><br>
-					<input id="sort_2" type="radio" name="sort_by" v-model="sort_by" value="first_name">
-					<label for="sort_2">Creative/Marketing</label><br>
-					<input id="sort_3" type="radio" name="sort_by" v-model="sort_by" value="last_name">
-					<label for="sort_3">Information Technology</label><br>
-					<input id="sort_4" type="radio" name="sort_by" v-model="sort_by" value="email">
-					<label for="sort_4">Business Consulting & Legal Services</label><br>
-					<input id="sort_5" type="radio" name="sort_by" v-model="sort_by" value="gender">
-					<label for="sort_5">Other</label>
-				</fieldset>
-			</div>
-			<!-- Industry -->
-			<div class="form__field col-3">
-				<fieldset>
-					<legend>Sort By Industry</legend>
-					<hr>
-					<input id="sort_1" type="radio" name="sort_by" v-model="sort_by" value="id">
-					<label for="sort_1">Trades & Home Services</label>
-					<input id="sort_2" type="radio" name="sort_by" v-model="sort_by" value="first_name">
-					<label for="sort_2">Creative/Marketing</label>
-					<input id="sort_3" type="radio" name="sort_by" v-model="sort_by" value="last_name">
-					<label for="sort_3">Information Technology</label>
-					<input id="sort_4" type="radio" name="sort_by" v-model="sort_by" value="email">
-					<label for="sort_4">Business Consulting & Legal Services</label>
-					<input id="sort_5" type="radio" name="sort_by" v-model="sort_by" value="gender">
-					<label for="sort_5">Other</label>
-				</fieldset>
-			</div>
-		</form>
-<!-- 		<div class="row">
-			<div class="col-12@sm filters-group-wrap">
-			<div class="filters-group">
-			  <p class="filter-label">Filter</p>
-			  <div class="btn-group filter-options">
-			    <button class="btn btn--primary active" data-group="one">Once</button>
-			    <button class="btn btn--primary" data-group="two">Two</button>
-			    <button class="btn btn--primary" data-group="three">Three</button>
-			    <button class="btn btn--primary" data-group="four">Four</button>
-			  </div>
-			</div> -->
-			<!-- 
-			<fieldset class="filters-group">
-			  <legend class="filter-label">Sort</legend>
-			  <div class="btn-group sort-options">
-			    <label class="btn active">
-			      <input type="radio" name="sort-value" value="dom"> Default
-			    </label>
-			    <label class="btn">
-			      <input type="radio" name="sort-value" value="title"> Title
-			    </label>
-			    <label class="btn">
-			      <input type="radio" name="sort-value" value="date-created"> Date Created
-			    </label>
-			  </div>
-			</fieldset>
-			</div>
-			</div> -->
-		<!-- Grid -->
-            <ul>
-                <li v-for="item in items" class="galleryCardContainer rounded button-stroked">
-                    <!-- <h3>{{ item['fields']['Item'] }}</h3> -->
-                    <p class="med center"><i>"{{ item['fields']['Insight'] | snippet }}"</i></p>
-                    <!--  -->
-                    <div class="show-meta center"><a v-on:click="show = !show" class="actions">Show more</a></div>
-                    <span class="meta-data" v-if="!show">
-                    <p><span class="fade caps subhead">Industry:</span><strong class="pill full-rounded blue-light2 pad-sm">{{ item['fields']['Industry'] }}</strong></p>
-                    <p><span class="fade caps subhead">Mandate:</span><strong class="pill full-rounded ">{{ item['fields']['Mandate'] }}</strong></p>
-                    <p><span class="fade caps subhead">Personas/Role:</span><strong class="pill full-rounded ">{{ item['fields']['Personas/Roles'] }}</strong></p>
-                    <p class="truncate"><span class="fade caps subhead">Evidence:</span><a v-bind:href="url">{{ item['fields']['Evidence'] }}</a></p>
-                    <p><span class="fade caps subhead">Experience Vector:</span><strong class="pill full-rounded blue-light2 pad-sm">{{ item['fields']['Experience vector'] }}</strong></p>
-                    <p><span class="fade caps subhead">Research Method:</span><strong class="pill full-rounded blue-light2 pad-sm">{{ item['fields']['Research Method'] }}</strong></p>
-                    <p><span class="fade caps subhead">Team Member:</span><strong class="pill full-rounded ">{{ item['fields']['Team Member'] }}</strong></p>
-                    <!-- <p><strong>Category: </strong>{{ item['fields']['Category'] }}</p> -->
-                    <!-- <img :src="item['fields']['Photo'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo']" width="150"> -->
-                    </span>
-                </li>
-            </ul>            
+			<form class="column col-3 col-md-12 col-sm-12 master_filter" action="#">
+				<!-- Search -->
+				<div class="search-group">
+					<input class="form-input" type="text" id="input-example-1" v-model="search" placeholder="Search nuggets">
+				</div>
+				<!-- Filter Industry -->
+				<div class="form__field form_options filters">
+					<fieldset>
+					<!-- details and summary Accordions example -->
+					<details class="accordion">
+					  <summary class="accordion-header">
+					    <div class="collapsible-filters__title">Sort By</div>
+						    <div class="collapsible-filters__label">Industry</div><i class="icon icon-arrow-right mr-1"></i>
+					  </summary>
+					  <div class="accordion-body">
+					    <!-- Accordions content -->
+					    <div class="filter-options form-group">
+					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Trades & Home Services}</label>
+					    	<label class="form-radio"><input id="sort_2" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Creative/Marketing}</label>
+					    	<label class="form-radio"><input id="sort_3" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Information Technology}</label>
+					    	<label class="form-radio"><input id="sort_4" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Business Consulting & Legal Services}</label>
+					    	<label class="form-radio"><input id="sort_5" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Other}</label>
+						</div> <!-- /end form-group -->
+					  </div> <!-- /end filter-group -->
+					</details>
+					</fieldset>
+				</div>
+				<!-- Filter Experience -->
+				<div class="form__field form_options filters">
+					<fieldset>
+					<!-- details and summary Accordions example -->
+					<details class="accordion">
+					  <summary class="accordion-header">
+					    <div class="collapsible-filters__title">Experience</div>
+						    <div class="collapsible-filters__label">All</div><i class="icon icon-arrow-right mr-1"></i>
+					  </summary>
+					  <div class="accordion-body">
+					    <!-- Accordions content -->
+					    <div class="filter-options form-group">
+					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Positive}</label>
+					    	<label class="form-radio"><input id="sort_2" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Negative}</label>
+					    	<label class="form-radio"><input id="sort_3" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Neutral}</label>
+						</div> <!-- /end form-group -->
+					  </div> <!-- /end filter-group -->
+					</details>
+					</fieldset>
+				</div>
+				<!-- Persona  -->
+				<div class="form__field form_options filters">
+					<fieldset>
+					<!-- details and summary Accordions example -->
+					<details class="accordion">
+					  <summary class="accordion-header">
+					    <div class="collapsible-filters__title">Customer Persona</div>
+						    <div class="collapsible-filters__label">All</div><i class="icon icon-arrow-right mr-1"></i>
+					  </summary>
+					  <div class="accordion-body">
+					    <!-- Accordions content -->
+					    <div class="filter-options form-group">
+					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Craftsperson}</label>
+					    	<label class="form-radio"><input id="sort_2" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Builder}</label>
+					    	<label class="form-radio"><input id="sort_3" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Neutral}</label>
+						</div> <!-- /end form-group -->
+					  </div> <!-- /end filter-group -->
+					</details>
+					</fieldset>
+				</div>
+			</form>
+
+			<!-- Grid -->
+	        <div class="column col-7 col-md-12 col-sm-12">    
+	        	<ul>
+	                <li v-for="item in items" class="galleryCardContainer rounded button-stroked col-12">
+	                    <!-- <h3>{{ item['fields']['Item'] }}</h3> -->
+	                    <p class="med"><i>"{{ item['fields']['Insight'] | snippet }}"</i></p>
+	                    <!--  -->
+	                    <div class="show-meta center"><a v-on:click="show = !show" class="actions">Show details</a></div>
+	                    <span class="meta-data" v-if="!show">
+	                    <p><span class="fade caps subhead">Industry:</span><strong class="pill full-rounded blue-light2 pad-sm">{{ item['fields']['Industry'] }}</strong></p>
+	                    <p><span class="fade caps subhead">Mandate:</span><strong class="pill full-rounded ">{{ item['fields']['Mandate'] }}</strong></p>
+	                    <p><span class="fade caps subhead">Personas/Role:</span><strong class="pill full-rounded ">{{ item['fields']['Personas/Roles'] }}</strong></p>
+	                    <p class="truncate"><span class="fade caps subhead">Evidence:</span><a v-bind:href="url">{{ item['fields']['Evidence'] }}</a></p>
+	                    <p><span class="fade caps subhead">Experience Vector:</span><strong class="pill full-rounded blue-light2 pad-sm">{{ item['fields']['Experience vector'] }}</strong></p>
+	                    <p><span class="fade caps subhead">Research Method:</span><strong class="pill full-rounded blue-light2 pad-sm">{{ item['fields']['Research Method'] }}</strong></p>
+	                    <p><span class="fade caps subhead">Team Member:</span><strong class="pill full-rounded ">{{ item['fields']['Team Member'] }}</strong></p>
+	                    <!-- <p><strong>Category: </strong>{{ item['fields']['Category'] }}</p> -->
+	                    <!-- <img :src="item['fields']['Photo'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo']" width="150"> -->
+	                    </span>
+	                </li>
+	            </ul>  
+			</div><!--/end Grid-->
         </div><!--/end App-->
         </div> <!-- /end Container -->
+
+        <section class="footer full-width">
+        <!-- Subscribe -->
+        <div class="container site-footer pad-lg">
+        	<div class="site-footer__subscribe col-8 col-md-12 col-sm-12 centered">
+    			<h2 class="site-footer__subscribe-header center">Stay Inspired!</h2>
+			    <p class="site-footer__subscribe-explanation center">Sign up for the weekly Research Nuggets digest straight in your inbox.</p>
+    			<div id="ember5514" class="site-footer__mailing-list-form mailing-list-form ember-view">
+	    			<form action="" class="mailing-list-form__form col-8 col-md-10 col-sm-10 centered" data-ember-action="">
+					    <!-- fields -->
+					    <div class="input-group">
+							<input type="email" required="" class="form-input input-lg mailing-list-form__email-input" placeholder="Enter email address">
+							<button class="btn btn-primary input-group-btn btn-lg">Submit</button>
+			            </div>
+
+					    <!-- spam bot detection -->
+					    <div style="position: absolute !important;left: -999em !important;" class="mailing-list-form__captcha-wrapper">
+					      <input placeholder="We use this field to detect spam bots. If you fill this in, you will be marked as a spammer." type="text">
+					    </div>
+
+					</form>
+				</div>
+			</div>
+			<p class="center copyright">Designed and built with <span class="text-error">♥</span> © 2018 - <a href="https://freshbooks.com" target="_blank">FreshBooks</a></p>
+		</div>
+        <!-- /end subscribe -->
+        </section>
         
         <!-- Include Dependancy Scripts -->
         <script type="text/javascript" src="https://unpkg.com/vue"></script>
@@ -114,7 +145,9 @@
 		<script type="text/javascript">
 		            // Filter insights to 100 characters
 		            Vue.filter('snippet', function(value){
-						return value.slice(0,200) + "...";
+						return value.slice(0,200) + ""; 
+						// If you want to truncate snippet
+						// return value.slice(0,200) + "...";
 					});
 
 					// End Filters
