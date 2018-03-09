@@ -14,14 +14,33 @@
     <body>
 		<div class="container container-pad">
 			<h1 class="fb-blue">FreshBooks Research Nuggets</h1>
-			<p class="site-desc">Learn from the makers behind hundreds of profitable businesses and side projects.</p>		
+			<p class="site-desc">Sharing insights that help us get to know our customers better.</p>	
 		<!-- App -->
 		<div id="app" class="columns">
 		<!-- Filters -->
 			<form class="column col-3 col-md-12 col-sm-12 master_filter" action="#">
 				<!-- Search -->
 				<div class="search-group">
-					<input class="form-input" type="text" id="input-example-1" v-model="search" placeholder="Search nuggets">
+					<input class="form-input" v-model="search" class="form-control" type="text" id="input-example-1" placeholder="Search nuggets">
+				</div>
+				<!-- Sort By Date -->
+				<div class="form__field form_options filters">
+					<fieldset>
+					<!-- details and summary Accordions example -->
+					<details class="accordion">
+					  <summary class="accordion-header">
+					    <div class="collapsible-filters__title">Sort By</div>
+						    <div class="collapsible-filters__label">Recent</div><i class="icon icon-arrow-right mr-1"></i>
+					  </summary>
+					  <div class="accordion-body">
+					    <!-- Accordions content -->
+					    <div class="filter-options form-group">
+					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> Newest first</label><br>
+					    	<label class="form-radio"><input id="sort_2" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> Oldest first</label><br>
+						</div> <!-- /end form-group -->
+					  </div> <!-- /end filter-group -->
+					</details>
+					</fieldset>
 				</div>
 				<!-- Filter Industry -->
 				<div class="form__field form_options filters">
@@ -29,17 +48,18 @@
 					<!-- details and summary Accordions example -->
 					<details class="accordion">
 					  <summary class="accordion-header">
-					    <div class="collapsible-filters__title">Sort By</div>
-						    <div class="collapsible-filters__label">Industry</div><i class="icon icon-arrow-right mr-1"></i>
+					    <div class="collapsible-filters__title">Industry</div>
+						    <div class="collapsible-filters__label">All</div><i class="icon icon-arrow-right mr-1"></i>
 					  </summary>
 					  <div class="accordion-body">
 					    <!-- Accordions content -->
 					    <div class="filter-options form-group">
-					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Trades & Home Services}</label>
-					    	<label class="form-radio"><input id="sort_2" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Creative/Marketing}</label>
-					    	<label class="form-radio"><input id="sort_3" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Information Technology}</label>
-					    	<label class="form-radio"><input id="sort_4" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Business Consulting & Legal Services}</label>
-					    	<label class="form-radio"><input id="sort_5" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Other}</label>
+					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="all" type="radio"><i class="form-icon"></i>All</label><br>
+					    	<label class="form-radio"><input id="sort_2" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Trades & Home Services}</label><br>
+					    	<label class="form-radio"><input id="sort_3" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Creative/Marketing}</label><br>
+					    	<label class="form-radio"><input id="sort_4" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Information Technology}</label><br>
+					    	<label class="form-radio"><input id="sort_5" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Business Consulting & Legal Services}</label><br>
+					    	<label class="form-radio"><input id="sort_6" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Other}</label><br>
 						</div> <!-- /end form-group -->
 					  </div> <!-- /end filter-group -->
 					</details>
@@ -57,9 +77,10 @@
 					  <div class="accordion-body">
 					    <!-- Accordions content -->
 					    <div class="filter-options form-group">
-					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Positive}</label>
-					    	<label class="form-radio"><input id="sort_2" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Negative}</label>
-					    	<label class="form-radio"><input id="sort_3" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Neutral}</label>
+					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="all" type="radio"><i class="form-icon"></i> All</label><br>
+					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="Positive" type="radio"><i class="form-icon"></i> Positive</label><br>
+					    	<label class="form-radio"><input id="sort_2" name="sort_by" v-model="sort_by" value="Negative" type="radio"><i class="form-icon"></i> Negative</label><br>
+					    	<label class="form-radio"><input id="sort_3" name="sort_by" v-model="sort_by" value="Neutral" type="radio"><i class="form-icon"></i> Neutral</label><br>
 						</div> <!-- /end form-group -->
 					  </div> <!-- /end filter-group -->
 					</details>
@@ -79,7 +100,13 @@
 					    <div class="filter-options form-group">
 					    	<label class="form-radio"><input id="sort_1" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Craftsperson}</label>
 					    	<label class="form-radio"><input id="sort_2" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Builder}</label>
-					    	<label class="form-radio"><input id="sort_3" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Neutral}</label>
+					    	<label class="form-radio"><input id="sort_3" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Accountant}</label>
+					    	<label class="form-radio"><input id="sort_4" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Bookkeeper}</label>
+					    	<label class="form-radio"><input id="sort_5" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Business Partner}</label>
+					    	<label class="form-radio"><input id="sort_6" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Project Manager}</label>
+					    	<label class="form-radio"><input id="sort_7" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Independant Contractor}</label>
+					    	<label class="form-radio"><input id="sort_8" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Basic Employee}</label>
+					    	<label class="form-radio"><input id="sort_9" name="sort_by" v-model="sort_by" value="id" type="radio"><i class="form-icon"></i> {Client}</label>
 						</div> <!-- /end form-group -->
 					  </div> <!-- /end filter-group -->
 					</details>
@@ -87,7 +114,7 @@
 				</div>
 			</form>
 
-			<!-- Grid -->
+			<!-- Nuggets Grid -->
 	        <div class="column col-7 col-md-12 col-sm-12">    
 	        	<ul>
 	                <li v-for="item in items" class="galleryCardContainer rounded button-stroked col-12">
