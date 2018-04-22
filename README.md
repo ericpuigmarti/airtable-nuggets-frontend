@@ -31,11 +31,3 @@ Now we can access any table in our Airsheet account by referencing the [API docs
 # Pass in the app key and table name
 axios.get("https://api.airtable.com/v0/"+app_id+"/"Table Name"
 ```
-
-//## Contributing
-
-//1. Fork it ( https://github.com/nesquena/airtable-ruby/fork )
-//2. Create your feature branch (`git checkout -b my-new-feature`)
-//3. Commit your changes (`git commit -am 'Add some feature'`)
-//4. Push to the branch (`git push origin my-new-feature`)
-//5. Create a new Pull Request
