@@ -4,7 +4,10 @@
 /* ------- */
 body {
     background: #EFEFEF !important;
-    font-family: 'Libre Franklin', sans-serif;
+    /* Google font */
+    /*font-family: 'Libre Franklin', sans-serif;*/
+    /* Typekit */
+    font-family: "freight-text-pro";
     /*padding: 4em;*/
     /*background: #FBFDFE !important;*/
 }
